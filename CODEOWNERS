@@ -1,0 +1,6 @@
+# Replaced by scripts/bootstrap-github.sh. Use @org/team names once you have a team.
+*                      @OWNER
+/proto/                @OWNER
+/api/                  @OWNER
+/db/migrations/        @OWNER
+/docs/data-licensing.md @OWNER

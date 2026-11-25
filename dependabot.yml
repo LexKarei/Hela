@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: "/"
+    schedule: { interval: weekly }
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule: { interval: weekly }
+  # Add these when the service exists, Dependabot errors on missing manifests:
+  # - package-ecosystem: gomod
+  #   directory: "/services/api-gateway"
+  # - package-ecosystem: cargo
+  #   directory: "/services/stream-engine"
+  # - package-ecosystem: pip
+  #   directory: "/services/batch"
