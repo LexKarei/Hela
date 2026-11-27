@@ -1,0 +1,6 @@
+{
+  "name": "@hela/tokens",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Design tokens source of truth. Build script arrives in Phase 0, sprint 1."
+}
