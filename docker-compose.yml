@@ -1,0 +1,29 @@
+# Local stack for development. Services (api-gateway, stream-engine, batch) are added in Phase 1.
+services:
+  db:
+    image: timescale/timescaledb:latest-pg16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-hela}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hela_dev_password}
+      POSTGRES_DB: ${POSTGRES_DB:-hela}
+    ports: ["${POSTGRES_PORT:-5432}:5432"]
+    volumes: [dbdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-hela}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  nats:
+    image: nats:2
+    command: ["-js", "-m", "8222"]
+    ports: ["${NATS_PORT:-4222}:4222", "8222:8222"]
+  redis:
+    image: redis:7
+    ports: ["${REDIS_PORT:-6379}:6379"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  dbdata:
